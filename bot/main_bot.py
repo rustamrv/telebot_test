@@ -11,10 +11,10 @@ from flask_restful import Api
 
 
 bot = TeleBot(TOKEN)
-app = Flask(__name__)
-app.register_blueprint(admin, url_prefix='/admin')
-api = Api(app)
-api.add_resource(RestUsers, '/users')
+# app = Flask(__name__)
+# app.register_blueprint(admin, url_prefix='/admin')
+# api = Api(app)
+# api.add_resource(RestUsers, '/users')
 
 
 @app.route(WEBHOOK_URI, methods=['POST'])

@@ -1,10 +1,14 @@
-from flask import Blueprint, render_template, redirect, url_for, request
+from flask import Blueprint, Flask, redirect, url_for, request
 from flask_restful import Api
+from resources import RestUsers
 
-admin = Blueprint('admin', __name__)
+app = Flask(__name__)
+api = Api(app)
+api.add_resource(RestUsers, '/users')
+app.run()
 
 
-@admin.route('/')
-@admin.route('/index')
+@app.route('/')
+@app.route('/index')
 def index():
     return "Hello world"
