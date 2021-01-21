@@ -3,7 +3,7 @@ from mongoengine import NotUniqueError
 from telebot import TeleBot
 from telebot.types import Message
 from telebot.types import Update
-from config import TOKEN, WEBHOOK_URI
+from bot.config.config import TOKEN, WEBHOOK_URI
 from api.app import admin
 from api.resources import RestUsers
 from database.models.models import User
