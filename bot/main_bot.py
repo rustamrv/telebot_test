@@ -4,17 +4,20 @@ from telebot import TeleBot
 from telebot.types import Message
 from telebot.types import Update
 from bot.config.config import TOKEN, WEBHOOK_URI
-from api.app import admin
-from api.resources import RestUsers
 from database.models.models import User
-from flask_restful import Api
 
+app = Flask(__name__)
 
 bot = TeleBot(TOKEN)
-# app = Flask(__name__)
 # app.register_blueprint(admin, url_prefix='/admin')
 # api = Api(app)
 # api.add_resource(RestUsers, '/users')
+
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return "Hello world"
 
 
 @app.route(WEBHOOK_URI, methods=['POST'])
