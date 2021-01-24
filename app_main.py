@@ -4,10 +4,10 @@ from api.resources.resources import RestUsers
 
 app = Flask(__name__)
 api = Api(app)
-api.add_resource(RestUsers, 'api/users')
+api.add_resource(RestUsers, '/api/users')
 
 
-@app.route('api/index', methods=["GET"])
+@app.route('/api/index', methods=["GET"])
 def index():
     return "Hello world"
 
