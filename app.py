@@ -10,3 +10,6 @@ api.add_resource(RestUsers, '/users')
 @app.route('/index')
 def index():
     return "Hello world"
+
+
+app.run()
