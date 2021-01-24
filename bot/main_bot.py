@@ -1,12 +1,13 @@
-from flask import request, abort
+from flask import request, abort, Flask
 from mongoengine import NotUniqueError
 from telebot import TeleBot
 from telebot.types import Message
 from telebot.types import Update
 from bot.config.config import TOKEN, WEBHOOK_URI
 from database.models.models import User
-from api.app import app
 
+
+app = Flask(__name__)
 bot = TeleBot(TOKEN)
 
 
