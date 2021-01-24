@@ -1,6 +1,6 @@
 from flask import Blueprint, Flask, redirect, url_for, request
 from flask_restful import Api
-from api.resources import RestUsers
+from .resources import RestUsers
 
 app = Flask(__name__)
 api = Api(app)
