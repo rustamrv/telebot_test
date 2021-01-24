@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Api
 from api.resources.resources import RestUsers
 
@@ -11,6 +11,11 @@ api.add_resource(RestUsers, '/users')
 @app.route('/index')
 def index():
     return "Hello world"
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return 'This route does not exist {}'.format(request.url), 404
 
 
 app.run()
