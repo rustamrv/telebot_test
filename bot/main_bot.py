@@ -9,9 +9,6 @@ from database.models.models import User
 app = Flask(__name__)
 
 bot = TeleBot(TOKEN)
-# app.register_blueprint(admin, url_prefix='/admin')
-# api = Api(app)
-# api.add_resource(RestUsers, '/users')
 
 
 @app.route('/')
@@ -41,9 +38,10 @@ def handle_start(message: Message):
             username=getattr(message.from_user, 'username', None),
             first_name=getattr(message.from_user, 'first_name', None)
         )
-    except NotUniqueError:
-        pass
+    except NotUniqueError as err:
+        print(err)
 
     name = f', {message.from_user.first_name}' if getattr(message.from_user, 'first_name') else ''
-    greetings = f'Hello {name}, i am bot'
-    bot.send_message(message.chat.id, greetings)
+    greet = f"Hello {name}, i am bot"
+    print(greet)
+    bot.send_message(message.chat.id, greet)
