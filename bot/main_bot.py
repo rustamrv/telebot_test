@@ -1,20 +1,13 @@
-from flask import Flask, request, abort
+from flask import request, abort
 from mongoengine import NotUniqueError
 from telebot import TeleBot
 from telebot.types import Message
 from telebot.types import Update
 from bot.config.config import TOKEN, WEBHOOK_URI
 from database.models.models import User
-
-app = Flask(__name__)
+from api.app import app
 
 bot = TeleBot(TOKEN)
-
-
-@app.route('/')
-@app.route('/index')
-def index():
-    return "Hello world"
 
 
 @app.route(WEBHOOK_URI, methods=['POST'])
