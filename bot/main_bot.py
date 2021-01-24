@@ -5,10 +5,26 @@ from telebot.types import Message
 from telebot.types import Update
 from bot.config.config import TOKEN, WEBHOOK_URI
 from database.models.models import User
+from flask_restful import Api
+from api.resources.resources import RestUsers
 
 
 app = Flask(__name__)
 bot = TeleBot(TOKEN)
+api = Api(app)
+api.add_resource(RestUsers, '/users')
+
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return "Hello world"
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    print(error)
+    return 'This route does not exist {}'.format(request.url), 404
 
 
 @app.route(WEBHOOK_URI, methods=['POST'])
