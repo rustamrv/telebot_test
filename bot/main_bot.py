@@ -38,10 +38,9 @@ def handle_start(message: Message):
             username=getattr(message.from_user, 'username', None),
             first_name=getattr(message.from_user, 'first_name', None)
         )
-    except NotUniqueError as err:
-        print(err)
+    except NotUniqueError:
+        pass
 
     name = f', {message.from_user.first_name}' if getattr(message.from_user, 'first_name') else ''
     greet = f"Hello {name}, i am bot"
-    print(greet)
     bot.send_message(message.chat.id, greet)
