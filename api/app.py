@@ -7,6 +7,6 @@ api = Api(app)
 api.add_resource(RestUsers, '/users')
 
 
-@app.route('/')
+@app.route('/index')
 def index():
     return "Hello world"
